@@ -5,21 +5,19 @@ const router = express.Router();
 import User from '../models/user';
 
 //Agregar usuario la accion es nuevoUser 
-router.post('/nuevoUser', async (req, res) => {
-    const body = req.body;
-    try {
+router.post('/nuevoUser', async (req, res, next) => {
+    const {usuario_user, password, nombre_user, email}= req.body;
+    const user = new User ({
+        nombre_user: nombre_user,
+        email: email,
+        usuario_user : usuario_user,
+        password: password
+    });
+    user.password = await user.encryptContraseña(user.password)
+    await user.save();
 
-        const userDB = await User.create(body);
-        res.status(200).json(userDB);
-
-    } catch (error) {
-
-        return res.status(500).json({
-            mensaje: 'Ocurrio un error',
-            error
-        })
-    }
-});
+    res.json({user})
+})
 
 //Obtener usuario con parametros
 router.get('/user/:id', async (req, res) => {

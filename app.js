@@ -12,7 +12,10 @@ const uri = 'mongodb://localhost:27017/DB_GeekShop';
 //Conexion en la nube
 //const uri = "mongodb+srv://juan:juan2404@db-njjv5.mongodb.net/DB_GeekShop?retryWrites=true&w=majority";
 const options ={
-    useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true
+    useNewUrlParser: true, 
+    useCreateIndex: true, 
+    useUnifiedTopology: true, 
+    useFindAndModify: false
 }
 mongoose.connect(uri, options).then(
     () => { console.log('Conexion con la DB exitosa')},
@@ -28,6 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 // Rutas
 app.use('/api', require('./routes/user'));
 app.use('/api', require('./routes/game'));
+app.use('/api', require('./routes/authController'));
 
 // Middleware para Vue.js router modo history || Siempre debe ir por debajo de las rutas
 const history = require('connect-history-api-fallback');
