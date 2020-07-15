@@ -10,7 +10,7 @@ const app = express();
 //const uri = 'mongodb://localhost:27017/DB_GeekShop';
 
 //Conexion en la nube
-const uri = "mongodb+srv://juan:juan2404@db-njjv5.mongodb.net/geekshop?retryWrites=true&w=majority";
+const uri = "mongodb+srv://juan:juan2404@db-njjv5.mongodb.net/<dbname>?retryWrites=true&w=majority";
 const options ={
     useNewUrlParser: true, 
     useCreateIndex: true, 
