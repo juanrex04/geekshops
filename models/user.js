@@ -20,7 +20,11 @@ const userSchema = new Schema({
 
 userSchema.methods.encryptContraseña = async (password) =>{
     const salt = await bcrypt.genSalt(10);
-    return bcrypt.hash(password, salt)
+    try {
+        return bcrypt.hash(password, salt)
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 userSchema.methods.validarContraseña = function (password){

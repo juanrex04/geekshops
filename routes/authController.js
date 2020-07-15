@@ -2,7 +2,6 @@ const {Router} = require('express');
 const router = Router();
 const jwt = require('jsonwebtoken');
 const verificarToken = require('../middlewares/verificarToken');
-const verificarRol = require('../middlewares/verificarRol');
 
 const config = require( '../middlewares/token');
 import User from '../models/user';
