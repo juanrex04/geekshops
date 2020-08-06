@@ -16,10 +16,10 @@ function verificarToken(req, res, next) {
 
     const desToken = jwt_decode(token);
 
-    if (desToken.role !== 'EMPL' && desToken.role !== 'ADMIN') {
+    if (desToken.role !== 'EMP' && desToken.role !== 'ADMIN') {
         return res.status(401).json({
             auth: false,
-            message: `Rol no autorizado ${desToken.role}`
+            message: `Rol no autorizado ${desToken.role} ${desToken.usuario_user}`
         })
     }
     next();

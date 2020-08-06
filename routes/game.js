@@ -8,7 +8,6 @@ import Game from '../models/game';
 router.post('/nuevoGame', async (req, res) => {
     const body = req.body;
     try {
-
         const gameDB = await Game.create(body);
         res.status(200).json(gameDB);
 
@@ -26,7 +25,6 @@ router.get('/game/:id', async (req, res) => {
     const _id = req.params.id;
 
     try {
-
         const gameDB = await Game.findOne({ _id });
         res.json(gameDB);
 
@@ -42,7 +40,6 @@ router.get('/game/:id', async (req, res) => {
 //Obtener todos los usuarios
 router.get('/game', async (req, res) => {
     try {
-
         const gameDB = await Game.find();
         res.json(gameDB);
 
@@ -87,7 +84,6 @@ router.put('/game/:id', async (req, res) =>{
     const body = req.body;
 
     try {
-        
         const gameDB = await Game.findByIdAndUpdate(_id,body, {new : true});
         res.json(gameDB);
     } catch (error) {

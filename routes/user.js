@@ -9,12 +9,13 @@ import User from '../models/user';
 
 //Agregar usuario la accion es la ruta nuevoUser 
 router.post('/nuevoUser',/*verificarToken,*/ async (req, res, next) => {
-    const {usuario_user, password, nombre_user, email}= req.body;
+    const {usuario_user, password, nombre_user, email,role}= req.body;
     const user = new User ({
         nombre_user: nombre_user,
         email: email,
         usuario_user : usuario_user,
-        password: password
+        password: password,
+        role: role
     });
     user.password = await user.encryptContraseña(user.password)
     await user.save();
