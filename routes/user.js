@@ -1,6 +1,5 @@
 import express, { json } from 'express';
 const router = express.Router();
-const verificarToken = require('../middlewares/verificarToken');
 const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
@@ -8,7 +7,7 @@ const saltRounds = 10;
 import User from '../models/user';
 
 //Agregar usuario la accion es la ruta nuevoUser 
-router.post('/nuevoUser',/*verificarToken,*/ async (req, res, next) => {
+router.post('/nuevoUser',async (req, res, next) => {
     const {usuario_user, password, nombre_user, email,role}= req.body;
     const user = new User ({
         nombre_user: nombre_user,
@@ -81,7 +80,6 @@ router.delete('/user/:id', async (req, res) => {
         })
     }
 })
-
 //Actualizar usuario
 router.put('/user/:id', async (req, res) =>{
     const _id = req.params.id;

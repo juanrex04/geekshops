@@ -2,7 +2,6 @@ const { Router } = require('express');
 const router = Router();
 const jwt = require('jsonwebtoken');
 const verificarToken = require('../middlewares/verificarToken');
-const verificarRol = require('../middlewares/verificarRol')
 
 const config = require('../middlewares/token');
 import User from '../models/user';
@@ -46,15 +45,18 @@ router.post('/login', async (req, res, next) => {
 })
 
 //Obtener datos del usuario
-router.get('/profile', verificarRol, async (req, res, next) => {
+router.get('/profile/:id', async (req, res, next) => {
+    const _id = req.params.id;
 
-    //{password : 0} permite no mostrar la contraseña
-    const user = await User.findById(req.userId, { password: 0 });
-    if (!user) {
-        return res.status(404).send('Usuario no encontrado')
+    try {
+        const userDB = await User.findOne({ _id });
+        res.json(userDB);
+
+    } catch (error) {
+        return res.status(500).json({
+            mensaje: 'Ocurrio un error',
+        })
     }
-
-    res.json(user)
 })
 
 module.exports = router;

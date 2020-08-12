@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken')
 const config = require('./token')
-const jwt_decode = require('jwt-decode');
 function verificarToken(req, res, next) {
     const token = req.headers['x-access-token']
 
@@ -13,15 +12,6 @@ function verificarToken(req, res, next) {
 
     const decoded = jwt.verify(token, config.secret);
     req.userId = decoded.id;
-
-    const desToken = jwt_decode(token);
-
-    if (desToken.role !== 'EMP' && desToken.role !== 'ADMIN') {
-        return res.status(401).json({
-            auth: false,
-            message: `Rol no autorizado ${desToken.role} ${desToken.usuario_user}`
-        })
-    }
     next();
 }
 
