@@ -41,7 +41,7 @@ router.get('/user/:id', async (req, res) => {
 });
 
 //Obtener todos los usuarios
-router.get('/user', /*verificarToken,*/ async (req, res) => {
+router.get('/user',async (req, res) => {
     try {
 
         const userDB = await User.find();

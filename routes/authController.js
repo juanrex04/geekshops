@@ -47,7 +47,6 @@ router.post('/login', async (req, res, next) => {
 //Obtener datos del usuario
 router.get('/profile/:id', async (req, res, next) => {
     const _id = req.params.id;
-
     try {
         const userDB = await User.findOne({ _id });
         res.json(userDB);
