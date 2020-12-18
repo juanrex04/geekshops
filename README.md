@@ -7,7 +7,7 @@ npm install
 
 ### Run project
 ```
-npm run devbabel
+npm run start
 ```
 ### Description page 😎  
 
@@ -26,7 +26,7 @@ The MEVN stack was implemented for the development of this page
 ```
 Role            User               password
 Administrator   admon@gmail.com
-Employed        emp@gmail.com      12345678
+Employed        emp@gmail.com      1234
 User            user@gmail.com
 
 Notes: The password is the same for all roles 
