@@ -25,9 +25,9 @@ The MEVN stack was implemented for the development of this page
 
 ```
 Role            User               password
-Administrator   admon@gmail.com
-Employed        emp@gmail.com      12345678
-User            user@gmail.com
+Administrator   admon
+Employed        emp                1234
+User            user
 
 Notes: The password is the same for all roles 
 You need NodeJs install for run this page
