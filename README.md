@@ -7,7 +7,7 @@ npm install
 
 ### Run project
 ```
-npm run devbabel
+npm run start
 ```
 ### Description page 😎  
 
